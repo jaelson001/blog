@@ -8,5 +8,9 @@
 	<p>
 		{{$meuPost[0]->content}}
 	</p>
+
+</div>
+<div class="row">
+	<a href="/" class="btn btn-primary">Voltar</a>
 </div>
 @endsection
