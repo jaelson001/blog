@@ -1,16 +1,25 @@
 @extends('tema.single')
 
 @section('conteudo')
-<div class="row">
-	<h1>{{$meuPost[0]->title}}</h1>
-</div>
-<div class="row">
-	<p>
-		{{$meuPost[0]->content}}
-	</p>
+<article>
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>{{$meuPost[0]->title}}</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">	
+			<p>
+				{{$meuPost[0]->content}}
+			</p>
+		</div>
+	</div>
 
-</div>
-<div class="row">
-	<a href="/" class="btn btn-primary">Voltar</a>
-</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<a href="/" class="btn btn-primary">Voltar</a>
+		</div>
+	</div>	
+</article>
+
 @endsection

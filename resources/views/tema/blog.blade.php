@@ -35,7 +35,7 @@
 	</div>
 
 </body>
-<footer class="footer">
+<footer class="footer" style="position: absolute;bottom:0;padding:10px;">
 	<center>
 		<h6>Blog Laravel | Todos os direitos reservados</h6>
 	</center>
