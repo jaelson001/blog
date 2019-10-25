@@ -1,9 +1,5 @@
 @extends('tema.blog')
 
-@section('header')
-@parent
-@stop
-
 @section('conteudo')
 <section>
 	<h1 class="title">Blog Laravel</h1>
@@ -22,3 +18,4 @@
 	</div>
 </section>
 @endsection
+

@@ -18,7 +18,7 @@ class PostsController extends BaseController
 	public function post($postSlug){
 		$meuPost = Posts::select('slug','title','content')->where('slug',$postSlug)->get();
 
-		return view('single', ['meuPost' => $meuPost]);
+		return view('single', ['meuPost' => $meuPost, 'title' => $meuPost[0]->title]);
 	}
     
     public function createPost(){
