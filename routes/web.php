@@ -14,3 +14,5 @@
 Route::get('/', 'PostsController@index');
 
 Route::get('/post/{slug}', 'PostsController@post');
+Route::get('/criar', 'PostsController@criar');
+Route::get('/atualizar', 'PostsController@atualizar');

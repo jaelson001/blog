@@ -21,7 +21,30 @@ class PostsController extends BaseController
 		return view('single', ['meuPost' => $meuPost, 'title' => $meuPost[0]->title]);
 	}
     
-    public function createPost(){
+    public function criar(Posts $tabela){
+    	
+    	$res = $tabela->insert([
+    		'slug' => 'segundo_post',
+    		'title' => 'Segunda postagem',
+    		'content' => 'essa é a descrição da segunda postagem',
+    	]);
 
+    	if($res){
+    		return 'cadastrado';
+    	}else{
+    		return 'erro ao cadastrar';
+    	}
+    }
+    public function atualizar(){
+    	$tabela = new Posts;
+    	$tabela->find(2);
+    	$res = $tabela->update([
+    		'slug' => 'segundo_post',
+    		'title' => 'Atualização postagem',
+    		'content' => 'essa é a descrição da segunda postagem',
+    	]);
+    	if($res){
+    		return 'atualizado';
+    	}
     }
 }
