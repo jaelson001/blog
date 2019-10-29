@@ -70,12 +70,13 @@ class PostsController extends BaseController
 	}
 
     //ATUALISAR
-    public function atualisar(Request $dados, Posts $tabela){
-        $res = $tabela->update([
-            'slug' => strtolower(str_replace(' ','_',$dados->title)),
-            'title' => $dados->title,
-            'content' => $dados->content
-        ]);
+    public function atualisar(Request $dados){
+        $tabela = Posts::find($dados->id);
+        $novo_slug = strtolower(str_replace(' ','_',$dados->title));
+        $tabela->slug = $novo_slug;
+        $tabela->title = $dados->title;
+        $tabela->content = $dados->content;
+        $res = $tabela->save();
         if($res){
             return redirect()->route('admin');
         }else{

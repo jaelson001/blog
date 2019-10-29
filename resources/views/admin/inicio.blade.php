@@ -18,12 +18,12 @@
 				<td>{{$postagem->title}}</td>
 				<td>{{$postagem->slug}}</td>
 				<td style="max-width:150px;" class="">
-					<a href="{{route('editar', $postagem->slug)}}" class="btn  btn-primary" style="width:150px;"><i class="far fa-edit"></i></a>
+					<a href="{{route('editar', $postagem->slug)}}" class="btn  btn-primary" style="width:50px;"><i class="far fa-edit"></i></a>
 					
-					<form action="{{route('destroy')}}"  style="width:150px;float:right;" method="post">
+					<form action="{{route('destroy')}}"  style="width:50px;float:right;" method="post">
 						@csrf
 						<input type="hidden" name="slug" value="{{$postagem->slug}}">
-						<button type="submit" name="deletar" class="btn  btn-danger" style="width:150px;"><i class="far fa-trash-alt"></i></button>
+						<button type="submit" name="deletar" class="btn  btn-danger" style="width:50px;"><i class="far fa-trash-alt"></i></button>
 					</form>
 				</td>
 			</tr>

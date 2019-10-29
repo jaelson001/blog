@@ -10,6 +10,9 @@
 @endif
 	<div class="form-group" style="padding: 10px;">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
+		@if(isset($postagem))
+			<input type="hidden" name="id" value="{{$postagem->id}}">
+		@endif
 		<input class="form-control" type="text" name="title" title="Título"  placeholder="Título" style=" margin-bottom: 10px;" max="50" pattern=".{6,}" required="true" value="@if(isset($postagem)){{$postagem->title}}@endif">
 		<textarea class="form-control" name="content" title="Conteudo" placeholder="Conteúdo" style=" margin-bottom: 10px; min-height: 60vh;" required="true">@if(isset($postagem)){{$postagem->content}}@endif</textarea>
 		<input type="submit" name="cadastrar" class="btn btn-success" value="Publicar">
