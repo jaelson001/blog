@@ -21,7 +21,7 @@ class PostsController extends BaseController
 		return view('single', ['meuPost' => $meuPost, 'title' => $meuPost[0]->title]);
 	}
     
-
+    
     public function login(){
         return view('login');
     }
@@ -55,5 +55,5 @@ class PostsController extends BaseController
     	}else{
     		return redirect()->back();
     	}
-    }
+	}
 }
