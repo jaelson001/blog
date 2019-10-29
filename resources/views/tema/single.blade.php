@@ -22,7 +22,7 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a href="/" class="nav-link">Início</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Sobre</a></li>
+					<li class="nav-item"><a href="/admin" class="nav-link">Painel</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">Contato</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">Trabalhe conosco</a></li>
 				</ul>

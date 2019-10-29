@@ -9,4 +9,5 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Posts extends Authenticatable
 {
 	protected $table = 'posts';
+	protected $fillable = ['slug','title','content'];
 }
