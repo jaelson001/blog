@@ -16,12 +16,16 @@ Route::get('/', 'PostsController@index');
 
 Route::get('/post/{slug}', 'PostsController@post');
 
-Route::group(['prefix' => 'admin'],function(){
-	Route::get('/', 'PostsController@exibir')->name('admin');
-	Route::get('criar', 'PostsController@criar')->name('criar');
-	Route::post('salvar', 'PostsController@salvar')->name('salvarpost');
-	Route::get('excluir', 'PostsController@excluir')->name('excluir');
-	Route::get('editar/{$slug}', 'PostsController@editar');
-});
+Route::get('admin', 'PostsController@exibir')->name('admin');
+
+Route::get('admin/criar', 'PostsController@criar')->name('criar');
+
+Route::post('admin/salvar', 'PostsController@salvar')->name('salvarpost');
+Route::post('admin/atualisar', 'PostsController@atualisar')->name('atualisar');
+
+Route::get('admin/editar/{slug}', 'PostsController@editar')->name('editar');
+
+Route::post('admin/excluir', 'PostsController@destroy')->name('destroy');
+
 
 

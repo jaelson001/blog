@@ -11,39 +11,51 @@ use App\Posts;
 
 class PostsController extends BaseController
 {
+    //HOME PAGE
 	public function index(){
 		$tabela = Posts::all();
 		return view('index',['postagens' => $tabela]);
 	}
 
+    //EXIBIR POSTS
 	public function post($postSlug){
 		$meuPost = Posts::select('slug','title','content')->where('slug',$postSlug)->get();
 		return view('single', ['meuPost' => $meuPost, 'title' => $meuPost[0]->title]);
 	}
     
-    
+    //LOGIN
     public function login(){
         return view('login');
     }
+
+    //PAINEL DE CONTROLE
     public function exibir(){
     	$tabela = Posts::all();
         return view('admin.inicio', ['postagens' => $tabela]);
     }
+
+    //EDITAR
 	public function editar($slugPost){
 		$postagem = Posts::where('slug', $slugPost)->get();
-		return view('admin.editar',['postagem' => $postagem]);
+        // return dd($postagem);
+        return view('admin.criar',['postagem' => $postagem[0]]);
 	}
+
+    // CRIAR
     public function criar(){
     	return view('admin.criar');
     }
-    public function excluir($slugPost){
-    	$res = Posts::where('slug', $slugPost)->destroy();
-    	if($res){
-    		return redirect()->route('admin');
-    	}else{
-    		return redirect()->back(); 
-    	}
+
+    //DELETAR
+    public function destroy(Request $dados){
+        $slug = $dados->slug;
+        $linha = Posts::where('slug', $dados->slug);
+        $res = $linha->delete();
+
+        return redirect()->route('admin');
     }
+
+    //SALVAR
 	public function salvar(Request $dados, Posts $tabela){
     	$res = $tabela->create([
     		'slug' => strtolower(str_replace(' ','_',$dados->title)),
@@ -56,4 +68,18 @@ class PostsController extends BaseController
     		return redirect()->back();
     	}
 	}
+
+    //ATUALISAR
+    public function atualisar(Request $dados, Posts $tabela){
+        $res = $tabela->update([
+            'slug' => strtolower(str_replace(' ','_',$dados->title)),
+            'title' => $dados->title,
+            'content' => $dados->content
+        ]);
+        if($res){
+            return redirect()->route('admin');
+        }else{
+            return redirect()->back();
+        }
+    }
 }
