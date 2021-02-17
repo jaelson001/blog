@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Middleware\Cors;
+
 Route::get('/login', 'PostsController@login')->name('login');
 
 Route::get('/', 'PostsController@index');
@@ -26,6 +28,11 @@ Route::post('admin/atualisar', 'PostsController@atualisar')->name('atualisar');
 Route::get('admin/editar/{slug}', 'PostsController@editar')->name('editar');
 
 Route::post('admin/excluir', 'PostsController@destroy')->name('destroy');
+
+Route::group(['prefix' => 'api', 'middleware' => 'cors'], function(){
+	Route::get('posts', 'ApiController@posts');
+	Route::get('post/{id}', 'ApiController@single');
+});
 
 
 
