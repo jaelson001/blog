@@ -12,22 +12,31 @@
 */
 use App\Http\Middleware\Cors;
 
-Route::get('/login', 'PostsController@login')->name('login');
+Route::get('/login', 'UserController@login')->name('login');
+Route::post('/login', 'UserController@finishLogin')->name('login');
+
+Route::get('/register', 'UserController@register')->name('register');
+Route::post('/register', 'UserController@finishRegister')->name('register');
+
+Route::get('logout', 'UserController@logout')->name('logout');
 
 Route::get('/', 'PostsController@index');
 
 Route::get('/post/{slug}', 'PostsController@post');
 
-Route::get('admin', 'PostsController@exibir')->name('admin');
+Route::group(['prefix'=>'admin', 'middleware' => 'user-auth'], function(){
+	Route::get('/', 'PostsController@exibir')->name('admin');
 
-Route::get('admin/criar', 'PostsController@criar')->name('criar');
+	Route::get('criar', 'PostsController@criar')->name('criar');
 
-Route::post('admin/salvar', 'PostsController@salvar')->name('salvarpost');
-Route::post('admin/atualisar', 'PostsController@atualisar')->name('atualisar');
+	Route::post('salvar', 'PostsController@salvar')->name('salvarpost');
 
-Route::get('admin/editar/{slug}', 'PostsController@editar')->name('editar');
+	Route::post('atualisar', 'PostsController@atualisar')->name('atualisar');
 
-Route::post('admin/excluir', 'PostsController@destroy')->name('destroy');
+	Route::get('editar/{slug}', 'PostsController@editar')->name('editar');
+
+	Route::post('excluir', 'PostsController@destroy')->name('destroy');
+});
 
 Route::group(['prefix' => 'api', 'middleware' => 'cors'], function(){
 	Route::get('posts', 'ApiController@posts');

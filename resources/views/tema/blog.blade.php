@@ -26,6 +26,9 @@
 					<li class="nav-item"><a href="/admin" class="nav-link">Painel</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">Contato</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">Trabalhe conosco</a></li>
+					@if(Session::has('lbul'))
+						<li class="nav-item"><a href="{{route('logout')}}" class="nav-link">Sair</a></li>
+					@endif
 				</ul>
 			</div>
 		</nav>
